@@ -1,0 +1,33 @@
+*relops.txt* Relative line numbers for pending operations
+
+===============================================================================
+
+When you execute an operation that takes a motion this plugin enables the
+relative line numbering. As soon as the motion is passed or the  operation is
+canceled the relative line numbers are disabled (unless you have set 'rnu' by
+hand).
+
+===============================================================================
+
+SETTINGS                                             *'g:relops_check_for_nu'*
+If this flag is set, RelOps only enables relative numbers when the line
+numbers are already visible. Default:
+  let g:relops_check_for_nu = 1
+
+MAPPINGS                                                     *relops-mappings*
+RelOps supports all built-in operations listed under |operator| in the help.
+RelOps recognizes user mappings to these operations.
+
+However there is currently no possibility to make user defined operations
+work with RelOps.
+
+KNOWN PROBLEMS                                         *relops-known-problems*
+- When the Cursor isn't moved after an operation (e.g. after a << when there
+  was no indentation) the relative numbering stays enabled.
+  Solution: Move cursor by hand.
+
+- Enabling 'rnu' is delayed, when there are other mappings starting with d, c,
+  y etc.
+  Solution: Remap those functions or decrease 'timeoutlen'.
+
+ vim:tw=80:ft=help:norl:

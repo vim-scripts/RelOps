@@ -1,0 +1,13 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=4212
+
+Vim 7.3 introduced an interesting functionality: relative line numbers.
+
+The problem with Vims implementation is that you have to decide between relative and absolute line numbers;
+you cant have both of them at the same time and manual switching is a nuisance.
+Moreover on some computers relative line numbers might cause the screen to flicker when moving the cursor.
+
+RelOps gives you the best of both worlds. This plugin enables relative line numbering
+when it is most useful: in operator-pending mode
+As soon as a motion is passed or the operation is canceled, relative line numbers
+are disabled again (unless 'rnu' is set by hand).
+

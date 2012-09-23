@@ -10,4 +10,3 @@ RelOps gives you the best of both worlds. This plugin enables relative line numb
 when it is most useful: in operator-pending mode
 As soon as a motion is passed or the operation is canceled, relative line numbers
 are disabled again (unless 'rnu' is set by hand).
-

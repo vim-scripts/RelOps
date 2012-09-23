@@ -2,7 +2,7 @@
 
 ===============================================================================
 
-When you execute an operation that takes a motion this plugin enables the
+When you execute an operation that takes a motion RelOps enables the
 relative line numbering. As soon as the motion is passed or the  operation is
 canceled the relative line numbers are disabled (unless you have set 'rnu' by
 hand).
@@ -11,23 +11,41 @@ hand).
 
 SETTINGS                                             *'g:relops_check_for_nu'*
 If this flag is set, RelOps only enables relative numbers when the line
-numbers are already visible. Default:
+numbers are already visible. Default: >
   let g:relops_check_for_nu = 1
+<
+-------------------------------------------------------------------------------
 
 MAPPINGS                                                     *relops-mappings*
-RelOps supports all built-in operations listed under |operator| in the help.
-RelOps recognizes user mappings to these operations.
+RelOps supports all built-in operations listed under |operator|.
 
-However there is currently no possibility to make user defined operations
-work with RelOps.
+                                                         *'g:relops_mappings'*
+No matter if you've overridden Vim's default key bindings or if you use a
+plugin that operates on multiple lines, RelOps lets you add support for your
+own mappings.
+Let's say you use tpope's Commentary plugin which allows you to use Vim
+motions to comment lines of code with \\{motion}. If you want this mapping
+to work with RelOps add the following line to your vimrc: >
+  g:relops_mappings = ['\\']
+<
+-------------------------------------------------------------------------------
+
+ENABLE BY HAND                                         *relops-enable-by-hand*
+                                                       *<Plug>RelopsEnablernu*
+You can enable relative line numbers for one movement by hand. Just map
+your desired keystroke to <Plug>RelopsEnablernu. >
+  nmap <Leader>r <Plug>RelopsEnablernu
+<
+-------------------------------------------------------------------------------
 
 KNOWN PROBLEMS                                         *relops-known-problems*
-- When the Cursor isn't moved after an operation (e.g. after a << when there
-  was no indentation) the relative numbering stays enabled.
+- When the Cursor isn't moved by an operation (e.g. yy) the relative
+  numbering stays enabled.
   Solution: Move cursor by hand.
 
 - Enabling 'rnu' is delayed, when there are other mappings starting with d, c,
   y etc.
-  Solution: Remap those functions or decrease 'timeoutlen'.
+  Solution: Remap those key bindings or decrease 'timeoutlen' for a shorter
+  delay.
 
- vim:tw=80:ft=help:norl:
+vim:tw=80:ft=help:norl:
